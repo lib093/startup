@@ -10,9 +10,10 @@ import org.qcit.lib_startup.interfaces.Startup
 import org.qcit.lib_startup.run.StartupRunnable
 import org.qcit.lib_startup.sort.TopologySort
 import java.lang.RuntimeException
+import java.util.concurrent.CountDownLatch
 
 class StartupManager constructor(var context: Context,var startupList:List<AndroidStartup<*>>) {
-
+    lateinit var mWaitCountDown: CountDownLatch
     private lateinit var startupSortStore:StartupSortStore
     fun start():StartupManager{
         if (Looper.myLooper() != Looper.getMainLooper()){
